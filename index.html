@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <!-- HERO SECTION -->
+    <header class="hero">
+      <div class="hero-top-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          🌙
+        </button>
+
+        <button class="music-toggle" id="music-toggle" aria-label="Toggle music">
+          🎧
+        </button>
+      </div>
+
+      <div class="hero-content">
+        <p class="hero-tagline">Embedded Engineer • Student</p>
+        <h1 class="hero-title">
+          Hey there, I’m <span class="accent">Krishnaveni Pola</span>,<br />
+          an Embedded Engineer polishing ideas until they shine ✨
+        </h1>
+        <p class="hero-subtitle">
+          I craft playful, thoughtful digital experiences with a focus on interaction and motion.
+        </p>
+        <!-- <button class="hero-cta" id="projects-cta">View my projects</button> -->
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-photo-frame">
+          <img src="hi_there.png" alt="Friendly illustration of Krishnaveni" />
+        </div>
+        <div class="hero-orbit hero-orbit--one"></div>
+        <div class="hero-orbit hero-orbit--two"></div>
+      </div>
+
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+      <div class="about-inner">
+        <div class="about-text">
+          <h2>About me</h2>
+          <p>
+            Hi! I’m Krishnaveni — an engineer-in-progress, endlessly curious, and someone who enjoys understanding 
+            how things work.I’m the kind of person who gets excited about new ideas, asks too many "why" questions, 
+            and believes that learning something new is one of the best feelings ever. 
+          </p>
+          <p>
+            I enjoy creating things—whether it’s a design, a concept, or a completely random solution that somehow 
+            works.My personality sits somewhere between organized chaos and calm determination.
+          </p>
+          <p>
+           I’m someone who says what I think, asks the questions others hesitate to ask, and isn’t afraid to start 
+           the conversations everyone else avoids. Talking to people comes naturally to me — I love hearing 
+           different viewpoints, understanding how others think, and building connections that feel real and 
+           effortless. 
+           I’m the type of person who can walk into a room and find common ground with anyone, whether we share the 
+           same interests or not. I pay attention to people, emotions, and energy, and I adapt quickly without 
+           losing who I am.
+          </p>
+          <p>
+            I love creating things — whether it’s a prototype, a concept, or a workaround that somehow just works — 
+            and I thrive in spaces where creativity meets logic. My best thinking usually involves a notebook, a 
+            playlist, and far too many tabs open.
+          </p>
+          <p>
+            If I had to describe myself in three words?
+            <h4>Creative. Curious. Bold.</h4>
+          </p>
+        </div>
+
+        <div class="about-photo">
+          <!-- Use your own image here -->
+          <div class="about-photo-frame">
+            <img src="me.jpg" alt="Krishnaveni Pola portrait" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects" id="projects">
+      <div class="projects-header">
+        <h2>Selected projects</h2>
+        <p>Hover a card to peek in. Click to dive into the case study.</p>
+      </div>
+
+      <div class="cards-wrapper">
+        <article
+          class="project-card project-card--cyan"
+          data-target="#project-flappy"
+        >
+          <div class="project-card-inner">
+            <h3 class="project-title">Flappy Bird game</h3>
+          </div>
+        </article>
+
+        <article
+          class="project-card project-card--red"
+          data-target="#project-line-follower"
+        >
+          <div class="project-card-inner">
+            <h3 class="project-title">Line follower robot</h3>
+          </div>
+        </article>
+        
+        <article
+          class="project-card project-card--pink"
+          data-target="#project-delivery-bot"
+        >
+          <div class="project-card-inner">
+            <h3 class="project-title">Delivery mobile manipulator</h3>
+          </div>
+        </article>
+
+        <article
+          class="project-card project-card--blue"
+          data-target="#project-crop-harvest"
+        >
+          <div class="project-card-inner">
+            <h3 class="project-title">Crop harvesting robot</h3>
+          </div>
+        </article>
+
+        
+      
+      <article
+        class="project-card project-card--grey"
+        data-target="#section-resume"
+      >
+        <div class="project-card-inner">
+          <h3 class="project-title">Resume</h3>
+        </div>
+      </article>
+        <article
+          class="project-card project-card--yellow"
+          data-target="#section-guestbook"
+        >
+          <div class="project-card-inner">
+            <h3 class="project-title">Guest Book</h3>
+          </div>
+        </article>
+      </div>
+      
+    </section>
+
+    <!-- DETAIL SECTIONS + CHARACTER -->
+    <div class="project-details-wrapper">
+      <div class="project-details">
+        <section id="project-flappy" class="project-section">
+          <div class="project-card-detail">
+            <div class="project-row">
+              <div class="project-text">
+                <h2>Flappy Bird game</h2>
+
+                <div class="project-meta">
+                  <span>ESP32</span>
+                  <span>Game</span>
+                  <span>OLED UI</span>
+                </div>
+
+                <p>
+                  A hardware-based implementation of the classic Flappy Bird game built using an ESP32 microcontroller.
+                  The project uses an OLED display to render game graphics and push buttons for player input. I designed
+                  the game logic, collision detection, and score system directly on the microcontroller, demonstrating
+                  embedded programming, real-time processing, and UI development on constrained hardware.
+                </p>
+              </div>
+
+              <div class="project-media">
+                <img src="flappy.png" alt="Flappy Bird game on OLED screen" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="project-line-follower" class="project-section">
+          <div class="project-card-detail">
+            <div class="project-row">
+              <div class="project-text">
+                <h2>Line follower robot</h2>
+
+                <div class="project-meta">
+                  <span>Autonomous</span>
+                  <span>IR Sensors</span>
+                  <span>Control</span>
+                </div>
+
+                <p>
+                  A fully autonomous robot designed to detect and follow a predefined path using IR sensors.
+                  The system uses sensor feedback to continuously adjust motor control, ensuring smooth navigation even
+                  on curves. This project strengthened my understanding of control systems, motor drivers, PID-like
+                  corrections, and the integration of embedded hardware with real-time decision-making.
+                </p>
+              </div>
+
+              <div class="project-media">
+                <img src="line.jpg" alt="Line follower robot" />
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section id="project-delivery-bot" class="project-section">
+          <div class="project-card-detail">
+            <div class="project-row">
+              <div class="project-text">
+                <h2>Delivery mobile manipulator</h2>
+
+                <div class="project-meta">
+                  <span>ESP32</span>
+                  <span>Mobile Base</span>
+                  <span>Robot Arm</span>
+                </div>
+
+                <p>
+                  A two-wheeled delivery robot equipped with a robotic arm, powered by an ESP32-based control system.
+                  The robot can be controlled via a web interface or Bluetooth, enabling remote item pickup, movement,
+                  and placement. I worked on designing the mechanical system, writing the movement and arm-control algorithms,
+                  and building a wireless UI. The project demonstrates skills in robotics, kinematics, IoT control,
+                  and automation for real-world tasks.
+                </p>
+              </div>
+
+              <div class="project-media">
+                <img src="delivery.jpg" alt="Delivery mobile manipulator" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="project-crop-harvest" class="project-section">
+          <div class="project-card-detail">
+            <div class="project-row">
+              <div class="project-text">
+                <h2>Crop harvesting robot</h2>
+
+                <div class="project-meta">
+                  <span>YOLO</span>
+                  <span>Computer Vision</span>
+                  <span>Agri-tech</span>
+                </div>
+
+                <p>
+                  An autonomous crop-monitoring and harvesting robot built using YOLO-based vision models for detecting
+                  ripeness stages. The robot identifies fruits (e.g., tomatoes) and classifies their ripeness using a
+                  deep-learning model trained on custom datasets. It integrates computer vision with robotic actuation to
+                  enable selective harvesting. This project highlights my skills in machine learning, dataset preparation,
+                  robotics integration, and agricultural automation.
+                </p>
+              </div>
+
+              <div class="project-media">
+                <img src="crop.jpg" alt="Crop harvesting robot" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <section id="section-resume" class="project-section">
+          <div class="project-card-detail">
+            <h2>Resume</h2>
+            <p>You can view or download my resume here.</p>
+            <a class="resume-button" href="resume.pdf" target="_blank" rel="noopener">
+              View resume (PDF)
+            </a>
+          </div>
+        </section>
+
+
+        <section id="section-guestbook" class="project-section">
+          <div class="project-card-detail">
+            <h2>Guest Book</h2>
+            <p>Your interactive guestbook will live here later.</p>
+          </div>
+        </section>
+      </div>
+
+
+      <!-- Right-side cartoon -->
+      <div class="project-character" id="project-character">
+        <div class="project-character-inner">
+          <img
+            src="music.png"
+            alt="Friendly character waving"
+            id="character-image"
+          />
+          <span class="character-hint" id="character-hint">
+            Click me ✨
+          </span>
+
+        </div>
+      </div>
+      <audio id="bg-music" loop>
+        <source src="calling.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+
+
+  <script>
+    console.log("music:", document.getElementById("bg-music"));
+    console.log("musicToggle:", document.getElementById("music-toggle"));
+
+    // Smooth scroll when a project card is clicked
+    document.querySelectorAll(".project-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const targetSelector = card.getAttribute("data-target");
+        const target = document.querySelector(targetSelector);
+        if (!target) return;
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    // "View my projects" button scrolls to projects row
+    const projectsCta = document.getElementById("projects-cta");
+    if (projectsCta) {
+      projectsCta.addEventListener("click", () => {
+        const projects = document.getElementById("projects");
+        if (!projects) return;
+        projects.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
+    // Theme toggle (dark / light)
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("theme-toggle");
+
+    if (themeToggle) {
+      const storedTheme = localStorage.getItem("theme");
+      if (storedTheme) {
+        root.setAttribute("data-theme", storedTheme);
+        themeToggle.textContent = storedTheme === "dark" ? "🌙" : "☀️";
+      } else {
+        root.setAttribute("data-theme", "dark");
+        themeToggle.textContent = "🌙";
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        themeToggle.textContent = next === "dark" ? "🌙" : "☀️";
+      });
+    }
+
+    // Background music toggle (small icon button)
+    const music = document.getElementById("bg-music");
+    const musicToggle = document.getElementById("music-toggle");
+    let isPlaying = false;
+
+    if (music && musicToggle) {
+      musicToggle.textContent = "🎧";
+
+      musicToggle.addEventListener("click", async () => {
+        try {
+          if (!isPlaying) {
+            await music.play();
+            isPlaying = true;
+            musicToggle.textContent = "⏸";
+          } else {
+            music.pause();
+            isPlaying = false;
+            musicToggle.textContent = "🎧";
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      });
+    }
+
+    // Reveal About photo on scroll
+    const aboutPhotoFrame = document.querySelector(".about-photo-frame");
+
+    if (aboutPhotoFrame && "IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            } else {
+              entry.target.classList.remove("is-visible");
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+
+      observer.observe(aboutPhotoFrame);
+    } else if (aboutPhotoFrame) {
+      // Fallback: show immediately
+      aboutPhotoFrame.classList.add("is-visible");
+    }
+
+    // Project character pose cycle
+    const characterImg = document.getElementById("character-image");
+    const characterHint = document.getElementById("character-hint");
+
+    const characterPoses = [
+      { src: "work.png", alt: "Character working at laptop", type: "default" },
+      { src: "music.png", alt: "Character listening to music", type: "music" },
+      { src: "paint.png", alt: "Character painting at easel", type: "default" }
+    ];
+
+    let characterIndex = 0;
+
+    function updateCharacterPose() {
+      const pose = characterPoses[characterIndex];
+      characterImg.src = pose.src;
+      characterImg.alt = pose.alt;
+
+      if (!characterHint) return;
+
+      if (pose.type === "music") {
+        characterHint.textContent = "Play music at top of page 🎧";
+      } else {
+        characterHint.textContent = "Click me ✨";
+      }
+    }
+
+    if (characterImg) {
+      characterImg.addEventListener("click", () => {
+        characterIndex = (characterIndex + 1) % characterPoses.length;
+        updateCharacterPose();
+      });
+
+      // ensure initial hint matches first pose
+      updateCharacterPose();
+    }
+  </script>
+
+</body>
+</html>
