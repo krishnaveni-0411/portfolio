@@ -23,18 +23,19 @@
       <div class="hero-content">
         <p class="hero-tagline">Embedded Engineer • Student</p>
         <h1 class="hero-title">
-          Hey there, I’m <span class="accent">Krishnaveni Pola</span>,<br />
-          an Embedded Engineer polishing ideas until they shine ✨
+          Hey there,<br /> 
+          I’m <span class="accent">Krishnaveni Pola</span>
         </h1>
+        <h2 class="hero-sub">  Welcome to my Portfolio!! </h2>
         <p class="hero-subtitle">
-          I craft playful, thoughtful digital experiences with a focus on interaction and motion.
+          Trying to find my place in this beautiful chaotic world O_o
         </p>
         <!-- <button class="hero-cta" id="projects-cta">View my projects</button> -->
       </div>
 
       <div class="hero-visual">
         <div class="hero-photo-frame">
-          <img src="hi_there.png" alt="Friendly illustration of Krishnaveni" />
+          <img src="hero.png" alt="Friendly illustration" />
         </div>
         <div class="hero-orbit hero-orbit--one"></div>
         <div class="hero-orbit hero-orbit--two"></div>
@@ -77,7 +78,6 @@
         </div>
 
         <div class="about-photo">
-          <!-- Use your own image here -->
           <div class="about-photo-frame">
             <img src="me.jpg" alt="Krishnaveni Pola portrait" />
           </div>
@@ -91,64 +91,80 @@
     <section class="projects" id="projects">
       <div class="projects-header">
         <h2>Selected projects</h2>
-        <p>Hover a card to peek in. Click to dive into the case study.</p>
+        <p>Hover a card to peek in. Click to dive into it.</p>
       </div>
 
       <div class="cards-wrapper">
-        <article
-          class="project-card project-card--cyan"
-          data-target="#project-flappy"
-        >
+        <div class="project-card project-card--cyan" data-target="#project-flappy">
           <div class="project-card-inner">
-            <h3 class="project-title">Flappy Bird game</h3>
+            <div class="project-card-bg">
+              <img src="flappy-bg.jpg" alt="Flappy Bird project preview" />
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-label">Flappy Bird game</span>
+            </div>
           </div>
-        </article>
+        </div>
 
-        <article
-          class="project-card project-card--red"
-          data-target="#project-line-follower"
-        >
+
+        <div class="project-card project-card--cyan" data-target="#project-line">
           <div class="project-card-inner">
-            <h3 class="project-title">Line follower robot</h3>
+            <div class="project-card-bg">
+              <img src="line-bg.jpg" alt="line following" />
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-label">line following robot</span>
+            </div>
           </div>
-        </article>
+        </div>
+
         
-        <article
-          class="project-card project-card--pink"
-          data-target="#project-delivery-bot"
-        >
+        <div class="project-card project-card--cyan" data-target="#project-flappy">
           <div class="project-card-inner">
-            <h3 class="project-title">Delivery mobile manipulator</h3>
+            <div class="project-card-bg">
+              <img src="delivery-bg.jpg" alt="Delivery robot project preview" />
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-label">Delivery robot</span>
+            </div>
           </div>
-        </article>
+        </div>
 
-        <article
-          class="project-card project-card--blue"
-          data-target="#project-crop-harvest"
-        >
+
+        <div class="project-card project-card--cyan" data-target="#project-flappy">
           <div class="project-card-inner">
-            <h3 class="project-title">Crop harvesting robot</h3>
+            <div class="project-card-bg">
+              <img src="tomato-bg.jpg" alt="Tomato project preview" />
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-label">Crop harvest robot</span>
+            </div>
           </div>
-        </article>
+        </div>
+
 
         
       
-      <article
-        class="project-card project-card--grey"
-        data-target="#section-resume"
-      >
-        <div class="project-card-inner">
-          <h3 class="project-title">Resume</h3>
-        </div>
-      </article>
-        <article
-          class="project-card project-card--yellow"
-          data-target="#section-guestbook"
-        >
+        <div class="project-card project-card--cyan" data-target="#project-flappy">
           <div class="project-card-inner">
-            <h3 class="project-title">Guest Book</h3>
+            <div class="project-card-bg">
+              <img src="resume-bg.png" alt="Resume project preview" />
+            </div>
+            
           </div>
-        </article>
+        </div>
+
+        <div class="project-card project-card--cyan" data-target="#project-flappy">
+          <div class="project-card-inner">
+            <div class="project-card-bg">
+              <img src="guest.jpg" alt="Book project preview" />
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-label">Guest Book</span>
+            </div>
+          </div>
+        </div>
+
       </div>
       
     </section>
@@ -310,9 +326,6 @@
 
 
   <script>
-    console.log("music:", document.getElementById("bg-music"));
-    console.log("musicToggle:", document.getElementById("music-toggle"));
-
     // Smooth scroll when a project card is clicked
     document.querySelectorAll(".project-card").forEach((card) => {
       card.addEventListener("click", () => {
@@ -409,9 +422,16 @@
     const characterHint = document.getElementById("character-hint");
 
     const characterPoses = [
-      { src: "work.png", alt: "Character working at laptop", type: "default" },
-      { src: "music.png", alt: "Character listening to music", type: "music" },
-      { src: "paint.png", alt: "Character painting at easel", type: "default" }
+      
+      { src: "c1.png", alt: "Character working at laptop", type: "default" },
+      { src: "c2.png", alt: "Character listening to music", type: "default" },
+      { src: "c3.png", alt: "Character taking a photo", type: "default" },
+      { src: "c4.png", alt: "Character tired with work", type: "default" },
+      { src: "c5.png", alt: "Character working at laptop", type: "default" },
+      { src: "c6.png", alt: "Character listening to music", type: "music" },
+      { src: "c7.png", alt: "Character taking a photo", type: "default" },
+      { src: "c8.png", alt: "Character tired with work", type: "default" }
+      
     ];
 
     let characterIndex = 0;
