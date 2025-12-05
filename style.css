@@ -7,11 +7,11 @@
 :root[data-theme="light"] {
   --bg: #f3f4f6;
   --bg-soft: #ffffff;
-  --card-bg: #e5e7eb;
+  --card-bg: #e5e7eb00;
   --accent: #f97316;
   --accent-soft: rgba(63, 46, 219, 0.16);
   --text-main: #050404;
-  --text-muted: #9ca3af;
+  --text-muted: #485265;
   --radius-lg: 24px;
   --radius-md: 16px;
   --shadow-soft: 0 14px 32px rgba(15, 23, 42, 0.18);
@@ -69,7 +69,7 @@ body {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   align-items: center;
   gap: 32px;
   padding: 32px 24px;
@@ -82,20 +82,6 @@ body {
   box-shadow: var(--shadow-soft);
   position: relative;
   overflow: hidden;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: radial-gradient(
-    circle at top,
-    rgba(248, 250, 252, 0.04),
-    transparent 60%
-  );
-  opacity: 0.7;
-  transform: translate3d(0, 10px, 0);
-  pointer-events: none;
 }
 
 /* actions in top-right */
@@ -163,13 +149,16 @@ body {
   letter-spacing: 0.16em;
   font-size: 0.74rem;
   color: var(--text-muted);
-  margin-bottom: 12px;
+  margin: 0 90px 12px;
 }
 
 .hero-title {
   font-size: clamp(2.3rem, 3vw + 1rem, 3.1rem);
   line-height: 1.05;
-  margin: 0 0 18px;
+  margin: 0 90px 18px;
+}
+.hero-sub {
+  margin: 0 90px 18px;
 }
 
 .hero-title .accent {
@@ -177,7 +166,7 @@ body {
 }
 
 .hero-subtitle {
-  margin: 0 0 24px;
+  margin: 0 90px 24px;
   color: var(--text-muted);
   max-width: 30rem;
   font-size: 0.97rem;
@@ -220,7 +209,7 @@ body {
   min-height: 220px;
 }
 
-/* Hero image (replaces hero-avatar) */
+/* Hero image  */
 
 .hero-photo-frame {
   width: 500px;        /* tweak size as you like */
@@ -238,7 +227,7 @@ body {
 .hero-photo-frame img {
   width: 100%;
   height: 100%;
-  object-fit: contain;  /* keep full drawing, no cropping */
+  object-fit: contain;  
   border-radius: 24px;
 }
 
@@ -359,67 +348,94 @@ body {
   position: relative;
 }
 
-.project-card:last-child {
-  margin-right: 0;
-}
-
 .project-card-inner {
+  position: relative;
   height: 100%;
   border-radius: 32px;
-  padding: 20px 22px;
-  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.85);
+  overflow: hidden;
+  
   transform-origin: bottom center;
   transform: translateY(0) scale(1);
   transition: transform var(--transition-med),
     box-shadow var(--transition-med),
     filter var(--transition-med);
-  display: flex;
-  align-items: flex-end;
 }
 
-.project-title {
-  margin: 0 0 10px;
-  font-size: 1.4rem;
-  font-weight: 700;
+/* background image fills the card */
+.project-card-bg {
+  position: absolute;
+  inset: 0;
 }
 
-/* card colors */
+.project-card-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-.project-card--cyan .project-card-inner {
+/* colored overlay so text is readable, plus tint per card color */
+.project-card-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+}
+
+/* per-card tints (reuse your existing palette) */
+.project-card--cyan .project-card-inner::before {
   background: #06b6d4;
-  color: #0f172a;
 }
 
-.project-card--red .project-card-inner {
+.project-card--red .project-card-inner::before {
   background: #fb7185;
-  color: #111827;
 }
 
-.project-card--blue .project-card-inner {
-  background: #3b82f6;
-  color: #f9fafb;
-}
-
-.project-card--grey .project-card-inner {
-  background: #e5e7eb;
-  color: #111827;
-}
-
-.project-card--pink .project-card-inner {
+.project-card--pink .project-card-inner::before {
   background: #f472b6;
-  color: #111827;
 }
 
-.project-card--yellow .project-card-inner {
+.project-card--blue .project-card-inner::before {
+  background: #3b82f6;
+}
+
+.project-card--grey .project-card-inner::before {
+  background: #e5e7eb;
+}
+
+.project-card--yellow .project-card-inner::before {
   background: #facc15;
+}
+
+/* title strip at top */
+.project-card-header {
+  position: relative;
+  z-index: 1;
+  padding: 14px 18px 10px;
+}
+
+.project-card-label {
+  display: inline-block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #000000;
+}
+
+/* darker text on light cards */
+.project-card--grey .project-card-label,
+.project-card--yellow .project-card-label {
   color: #111827;
 }
 
+/* hover: lift */
 .project-card:hover .project-card-inner {
   transform: translateY(-26px) scale(1.02);
   box-shadow: var(--shadow-hover);
   filter: brightness(1.06);
 }
+
 
 /* PROJECT DETAILS + CARTOON */
 
@@ -469,28 +485,6 @@ body {
   color: #111827;
 }
 
-/* per-project tag colors */
-
-#project-flappy .project-meta span {
-  background: rgba(6, 182, 212, 0.18);
-  color: #036672;
-}
-
-#project-line-follower .project-meta span {
-  background: rgba(251, 113, 133, 0.2);
-  color: #7c1022;
-}
-
-#project-crop-harvest .project-meta span {
-  background: rgba(59, 130, 246, 0.18);
-  color: #123676;
-}
-
-#project-delivery-bot .project-meta span {
-  background: rgba(244, 114, 182, 0.2);
-  color: #7b174e;
-}
-
 /* text + image in a row */
 
 .project-row {
@@ -527,7 +521,7 @@ body {
 .project-details-wrapper {
   display: grid;
   grid-template-columns: minmax(0, 2.3fr) minmax(260px, 0.9fr);
-  gap: 32px;
+  gap: 170px;
   align-items: flex-start;
   margin-top: 40px;
 }
@@ -543,45 +537,33 @@ body {
   top: 120px;
 }
 
-/* cartoon: no card, just the image */
+/* cartoon */
 
 .project-character-inner {
-  border-radius: 0;
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
+  
   text-align: center;
 }
 
 .project-character-inner img {
   display: block;
-  width: 350px;   /* adjust size here */
+  width: 265px;   /* adjust size here */
   height: auto;
-  object-fit: contain;
-  border-radius: 0;
-  cursor: pointer;
+  
 }
 
 /* hint text */
 
 .character-hint {
   display: inline-block;
-  margin-top: 6px;
-  font-size: 0.98rem;
+  margin-top: 4px;
+  font-size: 0.78rem;
   color: var(--text-muted);
   text-align: center;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
-}
-
-.project-character-inner:hover .character-hint {
+  /* always visible */
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
-
-/* MUSIC BUTTON (if used elsewhere) */
 
 
 /* ANIMATIONS */
