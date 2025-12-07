@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <!-- HERO SECTION -->
+    <header class="hero">
+      <div class="hero-top-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          🌙
+        </button>
+
+        <button class="music-toggle" id="music-toggle" aria-label="Toggle music">
+          🎧
+        </button>
+      </div>
+
+      <div class="hero-content">
+        <p class="hero-tagline">Embedded Engineer • Student</p>
+        <h1 class="hero-title">
+          Hey there,<br /> 
+          I’m <span class="accent">Krishnaveni Pola</span>
+        </h1>
+        <h2 class="hero-sub">  Welcome to my Portfolio!! </h2>
+        <p class="hero-typing" id="hero-typing">
+        </p>
+        <!-- <button class="hero-cta" id="projects-cta">View my projects</button> -->
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-photo-frame">
+          <img src="pictures/hero.png" alt="Friendly illustration" />
+        </div>
+        <div class="hero-orbit hero-orbit--one"></div>
+        <div class="hero-orbit hero-orbit--two"></div>
+      </div>
+
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+      <div class="about-inner">
+        <div class="about-text">
+          <h2>About me</h2>
+          <p>
+            Hi! I’m Krishnaveni — an engineer-in-progress, endlessly curious, and someone who enjoys understanding 
+            how things work.I’m the kind of person who gets excited about new ideas, asks too many "why" questions, 
+            and believes that learning something new is one of the best feelings ever. 
+          </p>
+          <p>
+            I enjoy creating things—whether it’s a design, a concept, or a completely random solution that somehow 
+            works.My personality sits somewhere between organized chaos and calm determination.
+          </p>
+          <p>
+           I’m someone who says what I think, asks the questions others hesitate to ask, and isn’t afraid to start 
+           the conversations everyone else avoids. Talking to people comes naturally to me — I love hearing 
+           different viewpoints, understanding how others think, and building connections that feel real and 
+           effortless. 
+           I’m the type of person who can walk into a room and find common ground with anyone, whether we share the 
+           same interests or not. I pay attention to people, emotions, and energy, and I adapt quickly without 
+           losing who I am.
+          </p>
+          <p>
+            I love creating things — whether it’s a prototype, a concept, or a workaround that somehow just works — 
+            and I thrive in spaces where creativity meets logic. My best thinking usually involves a notebook, a 
+            playlist, and far too many tabs open.
+          </p>
+          <p>
+            If I had to describe myself in three words?
+            <h4>Creative. Curious. Bold.</h4>
+          </p>
+        </div>
+
+        <div class="about-photo">
+          <div class="about-photo-frame">
+            <img src="me.jpg" alt="Krishnaveni Pola portrait" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects" id="projects">
+      <div class="projects-header">
+        <h2>Selected projects</h2>
+        <p>Hover a card to peek in. Click to dive into it.</p>
+      </div>
+
+      <div class="cards-wrapper">
+        <div class="project-card project-card--cyan" data-target="#project-flappy">
+          <div class="project-card-inner">
+            <div class="project-card-bg">
+              <img src="pictures\flappy-bg.jpg" alt="Flappy Bird project preview" />
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-label">Flappy Bird game</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="project-card project-card--red" data-target="#project-line-follower">
+          <div class="project-card-inner">
+            <div class="project-card-bg">
+              <img src="pictures\line-bg.jpg" alt="line following" />
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-label">line following robot</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card project-card--pink" data-target="#project-delivery-bot">
+          <div class="project-card-inner">
+            <div class="project-card-bg">
+              <img src="pictures\delivery-bg.jpg" alt="Delivery robot project preview" />
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-label">Delivery robot</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="project-card project-card--blue" data-target="#project-crop-harvest">
+          <div class="project-card-inner">
+            <div class="project-card-bg">
+              <img src="pictures\tomato-bg.jpg" alt="Tomato project preview" />
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-label">Crop harvest robot</span>
+            </div>
+          </div>
+        </div>
+
+
+        
+      
+        <div class="project-card project-card--grey" data-target="#section-resume"">
+          <div class="project-card-inner">
+            <div class="project-card-bg">
+              <img src="pictures\resume-bg.png" alt="Resume project preview" />
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="project-card project-card--yellow" data-target="#section-guestbook">
+          <div class="project-card-inner">
+            <div class="project-card-bg">
+              <img src="pictures\guest.jpg" alt="Book project preview" />
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-label">Guest Book</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+    </section>
+
+    <!-- DETAIL SECTIONS + CHARACTER -->
+    <div class="project-details-wrapper">
+      <div class="project-details">
+
+        <section id="section-skills" class="project-section">
+          <div class="project-card-detail">
+            <h2>Skills</h2>
+            <div class="skills-icons">
+              <div class="skill-icon">
+                <img src="icons/esp32.svg" alt="ESP32" />
+                <span>ESP32 / Embedded C</span>
+              </div>
+              <div class="skill-icon">
+                <img src="icons/robot.svg" alt="Robotics" />
+                <span>Robotics & Control</span>
+              </div>
+              <div class="skill-icon">
+                <img src="icons/yolo.svg" alt="YOLO" />
+                <span>YOLO / CV</span>
+              </div>
+              <div class="skill-icon">
+                <img src="icons/python.svg" alt="Python" />
+                <span>Python</span>
+              </div>
+              <div class="skill-icon">
+                <img src="icons/js.svg" alt="JavaScript" />
+                <span>JavaScript</span>
+              </div>
+              <div class="skill-icon">
+                <img src="icons/firebase.svg" alt="Firebase" />
+                <span>Firebase / Supabase</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+        <section id="project-flappy" class="project-section">
+          <div class="project-card-detail">
+            <div class="project-row">
+              <div class="project-text">
+                <h2>Flappy Bird game</h2>
+
+                <div class="project-meta">
+                  <span>ESP32</span>
+                  <span>Game</span>
+                  <span>OLED UI</span>
+                </div>
+
+                <p>
+                  A hardware-based implementation of the classic Flappy Bird game built using an ESP32 microcontroller.
+                  The project uses an OLED display to render game graphics and push buttons for player input. I designed
+                  the game logic, collision detection, and score system directly on the microcontroller, demonstrating
+                  embedded programming, real-time processing, and UI development on constrained hardware.
+                </p>
+              </div>
+
+              <div class="project-media">
+                <img src="pictures\flappy.png" alt="Flappy Bird game on OLED screen" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="project-line-follower" class="project-section">
+          <div class="project-card-detail">
+            <div class="project-row">
+              <div class="project-text">
+                <h2>Line follower robot</h2>
+
+                <div class="project-meta">
+                  <span>Autonomous</span>
+                  <span>IR Sensors</span>
+                  <span>Control</span>
+                </div>
+
+                <p>
+                  A fully autonomous robot designed to detect and follow a predefined path using IR sensors.
+                  The system uses sensor feedback to continuously adjust motor control, ensuring smooth navigation even
+                  on curves. This project strengthened my understanding of control systems, motor drivers, PID-like
+                  corrections, and the integration of embedded hardware with real-time decision-making.
+                </p>
+              </div>
+
+              <div class="project-media">
+                <img src="pictures\line.jpg" alt="Line follower robot" />
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section id="project-delivery-bot" class="project-section">
+          <div class="project-card-detail">
+            <div class="project-row">
+              <div class="project-text">
+                <h2>Delivery mobile manipulator</h2>
+
+                <div class="project-meta">
+                  <span>ESP32</span>
+                  <span>Mobile Base</span>
+                  <span>Robot Arm</span>
+                </div>
+
+                <p>
+                  A two-wheeled delivery robot equipped with a robotic arm, powered by an ESP32-based control system.
+                  The robot can be controlled via a web interface or Bluetooth, enabling remote item pickup, movement,
+                  and placement. I worked on designing the mechanical system, writing the movement and arm-control algorithms,
+                  and building a wireless UI. The project demonstrates skills in robotics, kinematics, IoT control,
+                  and automation for real-world tasks.
+                </p>
+              </div>
+
+              <div class="project-media">
+                <img src="pictures\delivery.jpg" alt="Delivery mobile manipulator" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="project-crop-harvest" class="project-section">
+          <div class="project-card-detail">
+            <div class="project-row">
+              <div class="project-text">
+                <h2>Crop harvesting robot</h2>
+
+                <div class="project-meta">
+                  <span>YOLO</span>
+                  <span>Computer Vision</span>
+                  <span>Agri-tech</span>
+                </div>
+
+                <p>
+                  An autonomous crop-monitoring and harvesting robot built using YOLO-based vision models for detecting
+                  ripeness stages. The robot identifies fruits (e.g., tomatoes) and classifies their ripeness using a
+                  deep-learning model trained on custom datasets. It integrates computer vision with robotic actuation to
+                  enable selective harvesting. This project highlights my skills in machine learning, dataset preparation,
+                  robotics integration, and agricultural automation.
+                </p>
+                <p class="project-highlight">
+                  Received ₹5,00,000 in competitive funding to scale this prototype into a deployable system.
+                </p>
+
+              </div>
+
+              <div class="project-media">
+                <img src="pictures/crop.jpg" alt="Crop harvesting robot" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <section id="section-resume" class="project-section">
+          <div class="project-card-detail">
+            <h2>Resume</h2>
+            <p>You can view or download my resume here.</p>
+            <a class="resume-button" href="resume.pdf" target="_blank" rel="noopener">
+              View resume (PDF)
+            </a>
+          </div>
+        </section>
+
+
+        <section id="section-guestbook" class="project-section">
+          <div class="project-card-detail">
+            <h2>Guest Book</h2>
+            <p>Drop a quick note or feedback about my projects.</p>
+
+            <form id="guestbook-form" class="guestbook-form">
+              <div class="guestbook-row">
+                <input
+                  type="text"
+                  id="guest-name"
+                  name="name"
+                  placeholder="Your name"
+                />
+                <input
+                  type="text"
+                  id="guest-role"
+                  name="role"
+                  placeholder="Role / how we met (optional)"
+                />
+              </div>
+
+              <textarea
+                id="guest-message"
+                name="message"
+                rows="3"
+                placeholder="Your message..."
+                required
+              ></textarea>
+
+              <button type="submit" class="guestbook-submit">
+                Sign guest book
+              </button>
+            </form>
+
+            <div id="guestbook-entries" class="guestbook-entries">
+              <!-- entries from Firebase will appear here -->
+            </div>
+          </div>
+        </section>
+
+
+        <section id="section-contact" class="project-section">
+          <div class="project-card-detail">
+            <h2>Contact</h2>
+            <p>If you’d like to collaborate or just say hi, feel free to reach out.</p>
+            <div class="contact-links">
+              <a href="mailto:krishnavenipola04@gmail.com">krishnavenipola04@gmail.com</a>
+              <a href="https://www.linkedin.com/in/krishnaveni-pola/" target="_blank" rel="noopener">
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+
+      <!-- Right-side cartoon -->
+      <div class="project-character" id="project-character">
+        <div class="project-character-inner">
+          <img
+            src="pictures\c9.png"
+            alt="Friendly character waving"
+            id="character-image"
+            title="Click me ✨"
+          />
+          <!-- <span class="character-tooltip" id="character-tooltip">
+            Click me ✨
+          </span> -->
+
+        </div>
+      </div>
+      <audio id="bg-music" loop>
+        <source src="calling.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+
+
+  <script>
+    // Smooth scroll when a project card is clicked
+    document.querySelectorAll(".project-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const targetSelector = card.getAttribute("data-target");
+        const target = document.querySelector(targetSelector);
+        if (!target) return;
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    // "View my projects" button scrolls to projects row
+    const projectsCta = document.getElementById("projects-cta");
+    if (projectsCta) {
+      projectsCta.addEventListener("click", () => {
+        const projects = document.getElementById("projects");
+        if (!projects) return;
+        projects.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
+    // Theme toggle (dark / light)
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("theme-toggle");
+
+    if (themeToggle) {
+      const storedTheme = localStorage.getItem("theme");
+      if (storedTheme) {
+        root.setAttribute("data-theme", storedTheme);
+        themeToggle.textContent = storedTheme === "dark" ? "🌙" : "☀️";
+      } else {
+        root.setAttribute("data-theme", "dark");
+        themeToggle.textContent = "🌙";
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        themeToggle.textContent = next === "dark" ? "🌙" : "☀️";
+      });
+    }
+
+    // Background music toggle (small icon button)
+    const music = document.getElementById("bg-music");
+    const musicToggle = document.getElementById("music-toggle");
+    let isPlaying = false;
+
+    if (music && musicToggle) {
+      musicToggle.textContent = "🎧";
+
+      musicToggle.addEventListener("click", async () => {
+        try {
+          if (!isPlaying) {
+            await music.play();
+            isPlaying = true;
+            musicToggle.textContent = "⏸";
+          } else {
+            music.pause();
+            isPlaying = false;
+            musicToggle.textContent = "🎧";
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      });
+    }
+
+    // Reveal About photo on scroll
+    const aboutPhotoFrame = document.querySelector(".about-photo-frame");
+
+    if (aboutPhotoFrame && "IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            } else {
+              entry.target.classList.remove("is-visible");
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+
+      observer.observe(aboutPhotoFrame);
+    } else if (aboutPhotoFrame) {
+      // Fallback: show immediately
+      aboutPhotoFrame.classList.add("is-visible");
+    }
+
+    // Project character pose cycle
+    const characterImg = document.getElementById("character-image");
+
+    const characterPoses = [
+      
+      { src: "pictures/c1.png", alt: "Character working at laptop", type: "default" },
+      { src: "pictures/c2.png", alt: "Character listening to music", type: "default" },
+      { src: "pictures/c3.png", alt: "Character taking a photo", type: "default" },
+      { src: "pictures/c4.png", alt: "Character tired with work", type: "default" },
+      { src: "pictures/c5.png", alt: "Character working at laptop", type: "default" },
+      { src: "pictures/c6.png", alt: "Character listening to music", type: "music" },
+      { src: "pictures/c7.png", alt: "Character taking a photo", type: "default" },
+      { src: "pictures/c8.png", alt: "Character tired with work", type: "default" }
+      
+    ];
+
+    let characterIndex = 0;
+
+    function updateCharacterPose() {
+      const pose = characterPoses[characterIndex];
+      characterImg.src = pose.src;
+      characterImg.alt = pose.alt;
+
+      if (pose.type === "music") {
+        characterImg.title = "Play music at top of page 🎧";
+      } else {
+        characterImg.title = "Click me ✨";
+      }
+    }
+
+    if (characterImg) {
+      characterImg.addEventListener("click", () => {
+        characterIndex = (characterIndex + 1) % characterPoses.length;
+        updateCharacterPose();
+      });
+
+      updateCharacterPose();
+    }
+
+    // Hero typing effect
+    const typingEl = document.getElementById("hero-typing");
+
+    if (typingEl) {
+      const phrases = [
+        "Trying to find my place in this beautiful chaotic world O_o",
+        "Building robots that actually do something useful.",
+        "Designing playful embedded systems and side projects."
+      ];
+
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typeSpeed = 70;      // ms per character while typing
+      const deleteSpeed = 40;    // ms per character while deleting
+      const holdDelay = 1200;    // pause when line is fully typed
+
+      function typeLoop() {
+        const current = phrases[phraseIndex];
+
+        if (!isDeleting) {
+          // typing forward
+          typingEl.textContent = current.slice(0, charIndex + 1);
+          charIndex++;
+
+          if (charIndex === current.length) {
+            isDeleting = true;
+            setTimeout(typeLoop, holdDelay);
+            return;
+          }
+
+          setTimeout(typeLoop, typeSpeed);
+        } else {
+          // deleting
+          typingEl.textContent = current.slice(0, charIndex - 1);
+          charIndex--;
+
+          if (charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(typeLoop, 300);
+            return;
+          }
+
+          setTimeout(typeLoop, deleteSpeed);
+        }
+      }
+
+      typeLoop();
+    }
+
+  </script>
+
+  <script type="module">
+    // Import Firebase modules from CDN
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      query,
+      orderBy,
+      onSnapshot,
+      serverTimestamp,
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    // 1) Your Firebase config 
+    const firebaseConfig = {
+      apiKey: "AIzaSyAhs6Ks1sooecjAVFsqNonb8rofpxAXdTg",
+      authDomain: "guestbook-4e93b.firebaseapp.com",
+      projectId: "guestbook-4e93b",
+      storageBucket: "guestbook-4e93b.firebasestorage.app",
+      messagingSenderId: "589189691850",
+      appId: "1:589189691850:web:abe012d236e359afdf3733"
+    };
+
+
+    // 2) Init Firebase + Firestore
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // 3) Grab DOM elements
+    const guestForm = document.getElementById("guestbook-form");
+    const guestEntriesEl = document.getElementById("guestbook-entries");
+
+    function renderGuestEntries(entries) {
+      if (!guestEntriesEl) return;
+      guestEntriesEl.innerHTML = "";
+      entries.forEach((entry) => {
+        const div = document.createElement("div");
+        div.className = "guest-entry";
+        const name = entry.name || "Anonymous";
+        const role = entry.role || "";
+        const message = entry.message || "";
+        div.innerHTML = `
+          <div class="guest-entry-header">
+            <span>${name}</span>
+            <span class="guest-entry-role">${role}</span>
+          </div>
+          <div class="guest-entry-message">
+            ${message}
+          </div>
+        `;
+        guestEntriesEl.appendChild(div);
+      });
+    }
+
+    // 4) Listen to Firestore in real time
+    const guestbookRef = collection(db, "guestbook");
+    const guestbookQuery = query(guestbookRef, orderBy("createdAt", "desc"));
+
+    onSnapshot(guestbookQuery, (snapshot) => {
+      const entries = snapshot.docs.map((doc) => doc.data());
+      renderGuestEntries(entries);
+    });
+
+    // 5) Handle form submit → add document
+    if (guestForm) {
+      guestForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const name = document.getElementById("guest-name").value.trim();
+        const role = document.getElementById("guest-role").value.trim();
+        const message = document.getElementById("guest-message").value.trim();
+        if (!message) return;
+
+        try {
+          await addDoc(guestbookRef, {
+            name,
+            role,
+            message,
+            createdAt: serverTimestamp(),
+          });
+          guestForm.reset();
+        } catch (err) {
+          console.error("Error adding guest entry", err);
+          alert("Could not save your message. Please try again.");
+        }
+      });
+    }
+  </script>
+
+
+</body>
+</html>
