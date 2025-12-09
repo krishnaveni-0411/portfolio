@@ -140,15 +140,26 @@
           </div>
         </div>
 
+        <div class="project-card project-card--green" data-target="#project-classroom-finder">
+          <div class="project-card-inner">
+            <div class="project-card-bg">
+              <img src="pictures/classroom-bg.jpg" alt="Classroom Finder project preview" />
+            </div>
+            <div class="project-card-header">
+              <span class="project-card-label">Classroom Finder</span>
+            </div>
+          </div>
+        </div>
 
-        
-      
+     
         <div class="project-card project-card--grey" data-target="#section-resume"">
           <div class="project-card-inner">
             <div class="project-card-bg">
-              <img src="pictures\resume-bg.png" alt="Resume project preview" />
+              <img src="pictures\resume-bg.jpg" alt="Resume project preview" />
             </div>
-            
+            <div class="project-card-header">
+              <span class="project-card-label">Resume</span>
+            </div>
           </div>
         </div>
 
@@ -172,36 +183,25 @@
       <div class="project-details">
 
         <section id="section-skills" class="project-section">
-          <div class="project-card-detail">
-            <h2>Skills</h2>
-            <div class="skills-icons">
-              <div class="skill-icon">
-                <img src="icons/esp32.svg" alt="ESP32" />
-                <span>ESP32 / Embedded C</span>
-              </div>
-              <div class="skill-icon">
-                <img src="icons/robot.svg" alt="Robotics" />
-                <span>Robotics & Control</span>
-              </div>
-              <div class="skill-icon">
-                <img src="icons/yolo.svg" alt="YOLO" />
-                <span>YOLO / CV</span>
-              </div>
-              <div class="skill-icon">
-                <img src="icons/python.svg" alt="Python" />
-                <span>Python</span>
-              </div>
-              <div class="skill-icon">
-                <img src="icons/js.svg" alt="JavaScript" />
-                <span>JavaScript</span>
-              </div>
-              <div class="skill-icon">
-                <img src="icons/firebase.svg" alt="Firebase" />
-                <span>Firebase / Supabase</span>
-              </div>
+          <div class="project-card-detail skills-graph-section">
+            <div class="skills-graph-left">
+              <h2>Skill graph</h2>
+              <p class="skills-graph-hint">
+                Click a bubble to see where I’ve used it.
+              </p>
+              <svg id="skills-graph" width="100%" height="360"></svg>
             </div>
+
+            <aside class="skills-graph-details" id="skills-graph-details">
+              <h3 id="skill-title">Click a skill</h3>
+              <p id="skill-level">Skill level: –</p>
+              <ul id="skill-projects">
+                <li>Select a node on the graph to view projects using that skill.</li>
+              </ul>
+            </aside>
           </div>
         </section>
+
 
 
 
@@ -318,6 +318,38 @@
           </div>
         </section>
 
+        <section id="project-classroom-finder" class="project-section">
+          <div class="project-card-detail">
+            <div class="project-row">
+              <div class="project-text">
+                <h2>Classroom Finder</h2>
+
+                <div class="project-meta">
+                  <span>Web app</span>
+                  <span>Firebase</span>
+                  <span>Maps / UI</span>
+                </div>
+
+                <p>
+                  A mini web app that helps students quickly locate unused classrooms during exam seaon
+                  on campus using a simple search interface and an interactive map. It stores room data
+                  and schedules in the cloud so information stays up to date.
+                </p>
+                <p>
+                  Built the front end with modern JavaScript and responsive CSS, and used Firebase for
+                  real-time data storage and hosting. This project strengthened skills in UX for
+                  navigation, data modelling, and integrating a cloud backend into a clean UI.
+                </p>
+              </div>
+
+              <div class="project-media">
+                <img src="pictures/classroom-finder.png" alt="Classroom Finder app UI" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+
 
         <section id="section-resume" class="project-section">
           <div class="project-card-detail">
@@ -364,11 +396,13 @@
               </button>
             </form>
 
-            <div id="guestbook-entries" class="guestbook-entries">
+            <!-- notice-board style guestbook -->
+            <div id="guestbook-entries" class="guestbook-board">
               <!-- entries from Firebase will appear here -->
             </div>
           </div>
         </section>
+
 
 
         <section id="section-contact" class="project-section">
@@ -399,6 +433,7 @@
           <!-- <span class="character-tooltip" id="character-tooltip">
             Click me ✨
           </span> -->
+          <span class="character-hint">Click the picture ✨</span>
 
         </div>
       </div>
@@ -595,6 +630,7 @@
 
   </script>
 
+
   <script type="module">
     // Import Firebase modules from CDN
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
@@ -618,7 +654,6 @@
       appId: "1:589189691850:web:abe012d236e359afdf3733"
     };
 
-
     // 2) Init Firebase + Firestore
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
@@ -630,12 +665,19 @@
     function renderGuestEntries(entries) {
       if (!guestEntriesEl) return;
       guestEntriesEl.innerHTML = "";
-      entries.forEach((entry) => {
+      entries.forEach((entry, index) => {
         const div = document.createElement("div");
-        div.className = "guest-entry";
+        // sticky-note style
+        div.className = "guest-entry note";
+
         const name = entry.name || "Anonymous";
         const role = entry.role || "";
         const message = entry.message || "";
+
+        // tiny random rotation so board looks organic
+        const tilt = (Math.random() - 0.5) * 4; // -2deg to +2deg
+        div.style.transform = `rotate(${tilt}deg)`;
+
         div.innerHTML = `
           <div class="guest-entry-header">
             <span>${name}</span>
@@ -683,6 +725,271 @@
     }
   </script>
 
+
+  <script>
+    // ---- Skill graph data ----
+    const skillData = {
+      nodes: [
+        { id: "me",       label: "ME",            group: "core",  size: 32, level: "Explorer of chaos" },
+        { id: "frontend", label: "Frontend",      group: "area",  size: 22, level: "Intermediate" },
+        { id: "backend",  label: "Backend",       group: "area",  size: 22, level: "Beginner–Intermediate" },
+        { id: "embedded", label: "Embedded",      group: "area",  size: 26, level: "Strong" },
+        { id: "robotics", label: "Robotics",      group: "area",  size: 26, level: "Strong" },
+        { id: "js",       label: "JavaScript",    group: "skill", size: 18, level: "Intermediate" },
+        { id: "python",   label: "Python",        group: "skill", size: 18, level: "Intermediate" },
+        { id: "esp32",    label: "ESP32 / C",     group: "skill", size: 20, level: "Strong" },
+        { id: "yolo",     label: "YOLO / CV",     group: "skill", size: 20, level: "Strong" },
+        { id: "firebase", label: "Firebase",      group: "skill", size: 18, level: "Intermediate" }
+      ],
+      links: [
+        { source: "me", target: "frontend" },
+        { source: "me", target: "backend" },
+        { source: "me", target: "embedded" },
+        { source: "me", target: "robotics" },
+        { source: "me", target: "python" },
+        { source: "frontend", target: "js" },
+        { source: "backend",  target: "js" },
+        { source: "backend",  target: "firebase" },
+        { source: "embedded", target: "esp32" },
+        { source: "robotics", target: "esp32" },
+        { source: "robotics", target: "yolo" },
+        { source: "embedded", target: "yolo" },
+        { source: "embedded", target: "python" },
+        { source: "robotics", target: "python" }
+
+      ],
+      usage: {
+        esp32: [
+          "Flappy Bird game (ESP32 + OLED)",
+          "Delivery mobile manipulator"
+        ],
+        yolo: [
+          "Crop harvesting robot (ripeness detection with YOLO)"
+        ],
+        firebase: [
+          "Portfolio guest book (Firestore real‑time DB)",
+          "Classroom-finder app (Firestore real‑time DB)"
+        ],
+        js: [
+          "Portfolio site interactions (JS + DOM)",
+          "Web UI for delivery robot control"
+        ],
+        python: [
+          "YOLO training + dataset scripts for agri‑robot",
+          "predicting crop yield using ML models"
+        ],
+        frontend: [
+          "This portfolio UI and interactions",
+          "Classroom-finder app UI"
+        ],
+        backend: [
+          "Guest book API (Firebase / Firestore)",
+          "Classroom allotment system backend"
+        ],
+        embedded: [
+          "Flappy Bird on ESP32",
+          "Line‑follower robot",
+          "Delivery mobile manipulator"
+        ],
+        robotics: [
+          "Line‑follower robot",
+          "robotic-arm",
+          "Delivery mobile manipulator",
+          "Crop harvesting robot"
+        ],
+        me: [
+          "Scroll through the page to see everything :)"
+        ]
+      }
+    };
+
+    window.addEventListener("load", () => {
+      console.log("initSkillGraph starting");
+
+      const svg = document.getElementById("skills-graph");
+      if (!svg) {
+        console.log("skills-graph SVG not found");
+        return;
+      }
+
+      const bbox = svg.getBoundingClientRect();
+      const width = bbox.width || 480;
+      const height = svg.getAttribute("height") || 360;
+      const ns = "http://www.w3.org/2000/svg";
+
+      // details panel
+      const titleEl = document.getElementById("skill-title");
+      const levelEl = document.getElementById("skill-level");
+      const projectsEl = document.getElementById("skill-projects");
+
+      let activeNodeId = null;
+      let nodeEls = []; // filled later
+
+      function showSkillDetails(node) {
+        if (!titleEl || !levelEl || !projectsEl) return;
+
+        activeNodeId = node.id;
+
+        titleEl.textContent = node.label;
+        levelEl.textContent = `Skill level: ${node.level || "–"}`;
+
+        projectsEl.innerHTML = "";
+        const use = skillData.usage[node.id] || [];
+        if (!use.length) {
+          const li = document.createElement("li");
+          li.textContent = "No specific projects listed yet.";
+          projectsEl.appendChild(li);
+        } else {
+          use.forEach(p => {
+            const li = document.createElement("li");
+            li.textContent = p;
+            projectsEl.appendChild(li);
+          });
+        }
+
+        // highlight selected bubble
+        nodeEls.forEach((g, i) => {
+          const n = skillData.nodes[i];
+          if (n.id === activeNodeId) {
+            g.classList.add("skill-node-active");
+          } else {
+            g.classList.remove("skill-node-active");
+          }
+        });
+      }
+
+      // initial positions in a simple ring around center
+      const centerX = width / 2;
+      const centerY = height / 2;
+      const radius = 130;
+
+      skillData.nodes.forEach((n, i) => {
+        if (n.id === "me") {
+          n.x = centerX;
+          n.y = centerY;
+        } else {
+          const angle = (i / skillData.nodes.length) * 2 * Math.PI;
+          n.x = centerX + radius * Math.cos(angle);
+          n.y = centerY + radius * Math.sin(angle);
+        }
+      });
+
+      const links = skillData.links.map(l => ({
+        ...l,
+        source: skillData.nodes.find(n => n.id === l.source),
+        target: skillData.nodes.find(n => n.id === l.target)
+      }));
+
+      // links
+      const linkEls = links.map(() => {
+        const line = document.createElementNS(ns, "line");
+        line.setAttribute("stroke", "rgba(148,163,184,0.6)");
+        line.setAttribute("stroke-width", "1.3");
+        svg.appendChild(line);
+        return line;
+      });
+
+      // nodes – clickable + draggable (with click/drag separation)
+      nodeEls = skillData.nodes.map(n => {
+        const g = document.createElementNS(ns, "g");
+        const circle = document.createElementNS(ns, "circle");
+        const label = document.createElementNS(ns, "text");
+
+        const baseColor =
+          n.id === "me"
+            ? "#f97316"
+            : n.group === "area"
+            ? "#3b82f6"
+            : "#22c55e";
+
+        circle.setAttribute(
+          "r",
+          n.id === "me" ? 30 : n.group === "area" ? 22 : 16
+        );
+        circle.setAttribute("fill", baseColor);
+        circle.setAttribute("stroke", "rgba(15,23,42,0.9)");
+        circle.setAttribute("stroke-width", "1.5");
+
+        label.textContent = n.label;
+        label.setAttribute("class", "skill-node-label");
+        label.setAttribute("text-anchor", "middle");
+        label.setAttribute("dy", n.id === "me" ? 38 : 26);
+
+        g.appendChild(circle);
+        g.appendChild(label);
+        svg.appendChild(g);
+
+        g.setAttribute("transform", `translate(${n.x},${n.y})`);
+        g.style.cursor = "pointer";
+
+        // drag + click detection
+        let dragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+        let startX = 0;
+        let startY = 0;
+
+        g.addEventListener("pointerdown", e => {
+          dragging = true;
+          svg.setPointerCapture(e.pointerId);
+          startX = e.clientX;
+          startY = e.clientY;
+          offsetX = n.x - e.offsetX;
+          offsetY = n.y - e.offsetY;
+        });
+
+        svg.addEventListener("pointermove", e => {
+          if (!dragging) return;
+          const moveDist = Math.hypot(e.clientX - startX, e.clientY - startY);
+          if (moveDist > 3) {
+            n.x = e.offsetX + offsetX;
+            n.y = e.offsetY + offsetY;
+            updatePositions();
+          }
+        });
+
+        svg.addEventListener("pointerup", e => {
+          if (!dragging) return;
+          const upDist = Math.hypot(e.clientX - startX, e.clientY - startY);
+          dragging = false;
+          // treat as click if very little movement
+          if (upDist <= 3) {
+            showSkillDetails(n);
+          }
+        });
+
+        svg.addEventListener("pointerleave", () => {
+          dragging = false;
+        });
+
+        return g;
+      });
+
+      // one function to update positions of nodes + links
+      function updatePositions() {
+        links.forEach((l, i) => {
+          const line = linkEls[i];
+          line.setAttribute("x1", l.source.x);
+          line.setAttribute("y1", l.source.y);
+          line.setAttribute("x2", l.target.x);
+          line.setAttribute("y2", l.target.y);
+        });
+
+        nodeEls.forEach((g, i) => {
+          const n = skillData.nodes[i];
+          g.setAttribute("transform", `translate(${n.x},${n.y})`);
+        });
+      }
+
+      // draw once initially
+      updatePositions();
+
+      // pre-select ME
+      const meNode = skillData.nodes.find(n => n.id === "me");
+      if (meNode) showSkillDetails(meNode);
+    });
+
+  </script>
 
 </body>
 </html>

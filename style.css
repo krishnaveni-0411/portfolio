@@ -458,6 +458,11 @@ body {
   background: #facc15;
 }
 
+.project-card--green .project-card-inner::before {
+  background: #22c55e;
+}
+
+
 /* title strip at top */
 .project-card-header {
   position: relative;
@@ -703,32 +708,7 @@ body {
 .contact-links a:hover {
   text-decoration: underline;
 }
-.skills-icons {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px 24px;
-  margin-top: 14px;
-}
 
-.skill-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  text-align: center;
-}
-
-.skill-icon img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  filter: drop-shadow(0 6px 12px rgba(15, 23, 42, 0.35));
-}
-
-.skill-icon span {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
 
 /* stack nicely on mobile */
 @media (max-width: 768px) {
@@ -788,38 +768,168 @@ body {
   box-shadow: 0 14px 32px rgba(15, 23, 42, 0.5);
 }
 
-.guestbook-entries {
+/* board layout */
+.guestbook-board {
   margin-top: 18px;
+  padding: 18px;
+  border-radius: 18px;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: flex-start;
+  background: radial-gradient(circle at top, #4b5563, #020617);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
 }
 
-.guest-entry {
+/* sticky note cards */
+.guest-entry.note {
+  width: 220px;
+  min-height: 110px;
   padding: 10px 12px;
-  border-radius: 14px;
-  background: rgba(15, 23, 42, 0.75);
-  color: #e5e7eb;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
   font-size: 0.88rem;
+  color: #0f172a;
+  background: #fef9c3;
+  overflow-wrap: break-word;
+  transition: transform 140ms ease-out, box-shadow 140ms ease-out;
 }
 
-:root[data-theme="light"] .guest-entry {
-  background: #e5e7eb;
-  color: #111827;
+/* small color variation per note */
+.guest-entry.note:nth-child(3n + 1) {
+  background: #fef3c7;
+}
+.guest-entry.note:nth-child(3n + 2) {
+  background: #fee2e2;
+}
+.guest-entry.note:nth-child(3n + 3) {
+  background: #dcfce7;
 }
 
+.guest-entry.note:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.5);
+}
+
+/* header + role inside a note */
 .guest-entry-header {
   display: flex;
   justify-content: space-between;
   gap: 6px;
   margin-bottom: 4px;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .guest-entry-role {
   font-weight: 400;
-  opacity: 0.8;
+  opacity: 0.7;
+  text-align: right;
 }
+
+.guest-entry-message {
+  font-size: 0.9rem;
+  margin-top: 4px;
+  white-space: pre-wrap;
+}
+
+/* light theme tweaks */
+:root[data-theme="light"] .guestbook-board {
+  background: #e5e7eb;
+  box-shadow: 0 10px 26px rgba(148, 163, 184, 0.6);
+}
+
+
+.skills-graph-section {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.2fr);
+  gap: 28px;
+  align-items: start;
+}
+
+/* left: title + hint + SVG */
+.skills-graph-left h2 {
+  margin: 0 0 6px;
+  font-size: 1.4rem;
+}
+
+.skills-graph-hint {
+  margin: 0 0 14px;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+/* right: detail card */
+.skills-graph-details {
+  background: radial-gradient(circle at top, var(--accent-soft), var(--bg));
+  border-radius: 20px;
+  padding: 18px 20px 20px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.55);
+}
+
+.skills-graph-details h3 {
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+}
+
+.skills-graph-details p {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.skills-graph-details ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  font-size: 0.88rem;
+}
+
+/* SVG nodes */
+#skills-graph {
+  max-width: 100%;
+  display: block;
+}
+
+#skills-graph circle {
+  filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.6));
+  transition: transform 150ms var(--transition-fast),
+              filter 150ms var(--transition-fast);
+}
+
+#skills-graph g:hover circle {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 8px 18px rgba(15, 23, 42, 0.8));
+}
+
+/* labels */
+.skill-node-label {
+  font-size: 0.7rem;
+  fill: #e5e7eb;
+  pointer-events: none;
+}
+
+:root[data-theme="light"] .skill-node-label {
+  fill: #111827;
+}
+
+/* selected node highlight (used by .skill-node-active in JS) */
+.skill-node-active circle {
+  stroke: #f97316;
+  stroke-width: 3px;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .skills-graph-section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .skills-graph-details {
+    order: -1; /* show details above graph on mobile if you like */
+  }
+}
+
